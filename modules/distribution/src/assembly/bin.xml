@@ -39,10 +39,10 @@
                 <exclude>**/LICENSE.txt</exclude>
                 <exclude>**/release-notes.html</exclude>
                 <exclude>**/claim-config.xml</exclude>
+		<exclude>**/tomcat/catalina-server.xml</exclude>
                 <exclude>**/registry.xml</exclude>
                 <exclude>**/email/email-admin-config.xml</exclude>
                 <exclude>**/dbscripts/**</exclude>
-                <exclude>**/tomcat/catalina-server.xml</exclude>
                 <exclude>**/security/authenticators.xml</exclude>
             </excludes>
         </fileSet>
@@ -184,6 +184,65 @@
             </includes>
         </fileSet>
 
+
+        <!--copy the social authenticator jars Facebook,Google,Windows-Live,Yahoo.-->
+        <fileSet>
+            <directory>../social-authenticators/target/socialauthenticatorCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--Copy the outbound authenticator jars OIDC, Passive-STS.-->
+        <fileSet>
+            <directory>../authenticators/target/authenticatoroutboundCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--copy the authentication jars for totp, x509, emailotp, smsotp, office365 and twitter authenticators-->
+        <fileSet>
+            <directory>../connectors/target/authenticatorCopied/jar</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
+        </fileSet>
+
+        <!--copy web apps for for totp, smsotp and emailotp authenticators-->
+        <fileSet>
+            <directory>../connectors/target/authenticatorCopied/war</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
+        </fileSet>
+
+        <!--copy web app for identity management feature -->
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
+            <includes>
+                <include>accountrecoveryendpoint.war</include>
+            </includes>
+        </fileSet>
+
+
+        <!--copy web app for identity recovery feature -->
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
+            <includes>
+                <include>api#identity#recovery#v0.9.war</include>
+            </includes>
+        </fileSet>
+
+        <!--copy web app for identity recovery feature -->
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
+            </directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
+            <includes>
+                <include>api#identity#user#v0.9.war</include>
+            </includes>
+        </fileSet>
+
         <!--copy shindig war  -->
         <fileSet>
             <directory>
@@ -195,18 +254,6 @@
                 <include>shindig.war</include>
             </includes>
         </fileSet>
-
-        <!--copy web app for certificate authority feature -->
-        <fileSet>
-            <directory>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/webapps
-            </directory>
-            <outputDirectory>${pom.artifactId}-${pom.version}/repository/deployment/server/webapps</outputDirectory>
-            <includes>
-                <include>ca.war</include>
-            </includes>
-        </fileSet>
-
 
         <!--Multitenancy related file -->
         <fileSet>
@@ -279,7 +326,33 @@
             <fileMode>644</fileMode>
             <directoryMode>775</directoryMode>
         </fileSet>
-
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/data-bridge
+            </directory>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/data-bridge</outputDirectory>
+            <includes>
+                <include>**/**</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/eventpublishers
+            </directory>
+            <outputDirectory>wso2is-${pom.version}/repository/deployment/server/eventpublishers</outputDirectory>
+            <includes>
+                <include>**/**.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/deployment/server/eventstreams
+            </directory>
+            <outputDirectory>wso2is-${pom.version}/repository/deployment/server/eventstreams</outputDirectory>
+            <includes>
+                <include>**/**.json</include>
+            </includes>
+        </fileSet>
     </fileSets>
 
     <files>
@@ -363,14 +436,14 @@
             <filtered>true</filtered>
             <fileMode>644</fileMode>
         </file>
-        <file>
+        <!--file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/tomcat/catalina-server.xml
             </source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/tomcat</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
-        </file>
+        </file-->
         <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/security/authenticators.xml
@@ -426,6 +499,13 @@
         </file>
         <file>
             <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/CaptchaConfig.properties
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/security/identity_log_tokens.properties
             </source>
             <outputDirectory>wso2is-${pom.version}/repository/conf/security</outputDirectory>
@@ -436,6 +516,13 @@
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/email/email-admin-config.xml
             </source>
             <outputDirectory>wso2is-${pom.version}/repository/conf/email</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/identity-event.properties
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
             <fileMode>644</fileMode>
         </file>
         <file>
@@ -460,11 +547,10 @@
             <fileMode>644</fileMode>
         </file>
         <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/identity/pages/samlsso_federate.html
-            </source>
+            <source>src/repository/resources/pages/samlsso_federate.html</source>
             <outputDirectory>wso2is-${pom.version}/repository/resources/identity/pages</outputDirectory>
-            <fileMode>644</fileMode>
+            <destName>samlsso_federate.html</destName>
+            <filtered>true</filtered>
         </file>
         <file>
             <source>
@@ -514,6 +600,12 @@
             <destName>secret-conf.properties</destName>
             <filtered>true</filtered>
         </file>
+	<file>
+            <source>src/repository/resources/conf/catalina-server.xml</source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/tomcat</outputDirectory>
+            <destName>catalina-server.xml</destName>
+            <filtered>true</filtered>
+        </file>
         <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/data/is-default-schema.zip
@@ -532,6 +624,14 @@
             </source>
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/etc/
             </outputDirectory>
+        </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/event-processor.xml
+            </source>
+            <outputDirectory>${pom.artifactId}-${pom.version}/repository/conf/
+            </outputDirectory>
+            <filtered>true</filtered>
         </file>
         <!--copy scim-consumer-config.xml-->
         <file>
@@ -659,6 +759,10 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/database/</outputDirectory>
             <fileMode>644</fileMode>
         </file>
-
+        <file>
+            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/oidc-scope-config.xml</source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
     </files>
 </assembly>

@@ -45,11 +45,16 @@ public final class OAuth2Constant {
     public final static String TOKEN_VALIDATION_SERVICE_URL = CommonConstants.DEFAULT_SERVICE_URL + "OAuth2TokenValidationService";
     public final static String HTTP_RESPONSE_HEADER_LOCATION = "location";
     public final static String OAUTH2_SCOPE_OPENID = "openid";
+    public final static String OAUTH2_SCOPE_EMAIL = "email";
     public final static String OAUTH2_SCOPE_DEFAULT = "";
     public final static String OAUTH_APPLICATION_NAME = "oauthTestApplication";
     public static final String UNSUPPORTED_GRANT_TYPE = "unsupported_grant_type";
+    public static final String UNAUTHORIZED_CLIENT = "unauthorized_client";
+    public final static String OAUTH_APPLICATION_STATE_REVOKED = "REVOKED";
 
     public final static String CALLBACK_URL = "http://localhost:8490/playground2/oauth2client";
+    public final static String CALLBACK_URL_REGEXP = "regexp=http:\\/\\/localhost:8490\\/playground2\\/oauth2client[\\?]?((\\w+)=(\\w+)&?)+";
+    public final static String CALLBACK_REQUEST_URL_WITH_PARAMS = "http://localhost:8490/playground2/oauth2client?param=value&param2=value2";
     public final static String AUTHORIZED_USER_URL = "http://localhost:8490/playground2/oauth2-authorize-user.jsp";
     public final static String AUTHORIZED_URL = "http://localhost:8490/playground2/oauth2.jsp";
     public final static String GET_ACCESS_TOKEN_URL = "http://localhost:8490/playground2/oauth2-get-access-token.jsp";
