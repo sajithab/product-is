@@ -1,5 +1,10 @@
-===============================
-WSO2 Identity Server 5.2.0 Beta
+<a href="http://wso2.com/products/identity-server/">
+<img src="http://b.content.wso2.com/sites/all/common/images/product-logos/identity-server.svg"
+     srcset="http://b.content.wso2.com/sites/all/common/images/product-logos/identity-server.svg@2x.png 2x"
+     alt="WSO2 Identity Server" />
+</a>
+
+Welcome to WSO2 Identity Server
 ===============================
 
 ---
@@ -9,9 +14,10 @@ WSO2 Identity Server 5.2.0 Beta
 | master      | [![Build Status](https://wso2.org/jenkins/job/product-is/badge/icon)](https://wso2.org/jenkins/job/product-is) |
 
 
----
 
-Welcome to the WSO2 Identity Server 5.2.0 Beta release.
+[![Join the chat at https://gitter.im/wso2/product-identity-server](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wso2/product-identity-server?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+---
 
 WSO2 Identity Server is an open source Identity and Entitlement management server. It supports a wide array of authentication 
 protocols such as SAML 2.0 Web SSO, OpenID, OAuth 2.0/1.0a, OpenID Connect and WS-Federation Passive. 
@@ -25,9 +31,9 @@ New Features
 
 *   Workflow support for Identity Server
 
-        Engage workflows for any user/role operations carried out using WSO2 IS Management Console.
-        For example, when a new user gets registered with WSO2 IS, a workflow will automatically be triggered and
-        s/he will be assigned to a particular user role.
+    Engage workflows for any user/role operations carried out using WSO2 IS Management Console. For example, 
+    when a new user gets registered with WSO2 IS, a workflow will automatically be triggered and the user 
+    can be assigned to a particular user role.
 
 *   FIDO compliance
 
