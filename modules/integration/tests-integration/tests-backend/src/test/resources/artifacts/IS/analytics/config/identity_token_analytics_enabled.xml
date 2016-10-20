@@ -431,20 +431,14 @@
                        orderId="100" enable="false">
             <Property name="Data.Store">org.wso2.carbon.identity.governance.store.UserStoreBasedIdentityDataStore</Property>
         </EventListener>
-        <EventListener type="org.wso2.carbon.identity.core.handler.AbstractIdentityMessageHandler"
-                       name="org.wso2.carbon.identity.data.publisher.application.authentication.impl.DASLoginDataPublisherImpl"
-                       orderId="10" enable="true"/>
-        <EventListener type="org.wso2.carbon.identity.core.handler.AbstractIdentityMessageHandler"
-                       name="org.wso2.carbon.identity.data.publisher.application.authentication.impl.DASSessionDataPublisherImpl"
-                       orderId="11" enable="true"/>
-        <EventListener type="org.wso2.carbon.identity.core.handler.AbstractIdentityMessageHandler"
-                       name="org.wso2.carbon.identity.data.publisher.application.authentication.AuthnDataPublisherProxy"
-                       orderId="11" enable="true"/>
-    </EventListeners>
+        <EventListener type="org.wso2.carbon.identity.core.handler.AbstractIdentityHandler"
+                        name="org.wso2.carbon.identity.data.publisher.oauth.listener.OAuthTokenIssuanceDASDataPublisher"
+                        orderId="11" enable="true"/>
+     </EventListeners>
 
-    <CacheConfig>
-        <CacheManager name="IdentityApplicationManagementCacheManager">
-            <!--<Cache name="AppAuthFrameworkSessionContextCache" enable="false" timeout="1" capacity="5000"/>-->
+     <CacheConfig>
+         <CacheManager name="IdentityApplicationManagementCacheManager">
+             <!--<Cache name="AppAuthFrameworkSessionContextCache" enable="false" timeout="1" capacity="5000"/>-->
         </CacheManager>
     </CacheConfig>
 

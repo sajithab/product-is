@@ -40,6 +40,7 @@
 
     <test name="is-analytics-tests" preserve-order="true" parallel="false" group-by-instances="true">
         <classes>
+            <class name="org.wso2.identity.integration.test.analytics.oauth.OAuth2TokenIssuance"/>
             <class name="org.wso2.identity.integration.test.analytics.authentication.AnalyticsLoginTestCase"/>
         </classes>
     </test>
@@ -85,6 +86,10 @@
             <class name="org.wso2.identity.integration.test.oauth2.OAuthAdminServiceTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceIntrospectionTestCase"/>
 
+            <!--OIDC Test Cases-->
+            <class name="org.wso2.identity.integration.test.oidc.OIDCAuthCodeGrantSSOTestCase"/>
+            <class name="org.wso2.identity.integration.test.oidc.OIDCAuthCodeGrantSSODifferentSubjectIDTestCase"/>
+
             <!--OpenId Test Cases-->
             <class name="org.wso2.identity.integration.test.openid.OpenIDAuthenticationTestCase" />
             <class name="org.wso2.identity.integration.test.openid.OpenIDProviderServerConfigTestCase" />
@@ -124,6 +129,7 @@
     <test name="is-tests-sequential" preserve-order="true" parallel="false" group-by-instances="true">
         <classes>
             <class name="org.wso2.identity.integration.test.saml.SAMLSSOTestCase"/>
+            <class name="org.wso2.identity.integration.test.oauth2.OIDCDiscoveryTestCase"/>
             <!--<class name="org.wso2.identity.integration.test.saml.SAMLLocalAndOutboundAuthenticatorsTestCase"/>-->
         </classes>
     </test>
